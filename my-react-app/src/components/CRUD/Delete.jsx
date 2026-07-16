@@ -1,9 +1,22 @@
-function Delete (){
+import { useContext } from "react";
+import { BooksContext } from "../context/books";
+
+function Delete() {
+
+    const { books, deleteBook } = useContext(BooksContext);
+
     return (
-        <div>
-            <h1>Delete Books</h1>
-            <p>Deleting books.</p>
-        </div>
+        <ul>
+            {books.map((book) => (
+                <li
+                    key={book.id}
+                    onClick={() => deleteBook(book.id)}
+                    style={{ cursor: "pointer" }}
+                >
+                    {book.title} - {book.author}
+                </li>
+            ))}
+        </ul>
     );
 }
 

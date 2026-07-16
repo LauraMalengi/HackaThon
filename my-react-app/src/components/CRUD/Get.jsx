@@ -1,9 +1,18 @@
+import { useContext } from "react";
+import { BooksContext } from "../context/books";
+
 function Get() {
+
+    const { books } = useContext(BooksContext);
+
     return (
-        <div>
-            <h1>All Books</h1>
-            <p> All the books.</p>
-        </div>
+        <ul>
+            {books.map((book) => (
+                <li key={book.id}>
+                    {book.title} - {book.author}
+                </li>
+            ))}
+        </ul>
     );
 }
 
